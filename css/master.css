@@ -28,19 +28,16 @@ main h2 {
 }
 
 #cards {
-  max-width: 60%;
-  margin: 0 auto;
-  overflow: hidden;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-start space-between;
-  align-items: baseline; */
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center space-between;
+  align-items: center;
 }
 
 article {
+  width: 55%;
   padding: 5px;
   margin: 5px 0;
-  width: 100%;
   border-radius: .25em;
   background-color: #3498db;
 }
