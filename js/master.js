@@ -1,92 +1,51 @@
 $(document).ready( function() {
 
-  let url = "http://api.apixu.com/v1/forecast.json?key=cc9c36b492994ba8993180021193103&q=12866&days=7";
+  $("#forecast-heading").text("Enter a valid Zip Code");
+  $(".sk-circle").hide();
 
-  $.ajax(
-   {
-     url: url,
-     success: function(result){
-       let forecast = result.forecast.forecastday;
+  $("#location-input").on("input", function(){
+    if($(this).val().length == 5 ) {
 
-       console.log(forecast);
+      let url = `http://api.apixu.com/v1/forecast.json?key=cc9c36b492994ba8993180021193103&q=${$(this).val()}&days=${$('input[name="days"]:checked').val()}`;
 
-       $.each (forecast, function(index, dayOfWeek) {
-         let $highLowH3 = $("<h3/>", { text: dayOfWeek.day.maxtemp_f + "/" + dayOfWeek.day.mintemp_f });
-         let $weatherImg = $("<img/>", { src: "https:" + dayOfWeek.day.condition.icon })
-         let $dateH3 = $("<h3/>", { text: dayOfWeek.date } );
-         let $article = $("<article/>", { class: "col-1" } );
+      console.log(url);
 
-         $article.append($dateH3);
-         $article.append($weatherImg);
-         $article.append($highLowH3);
+      $.ajax(
+       {
+         url: url,
+         beforeSend: function() {
+           $(".sk-circle").show();
+         },
+         error: function() {
+           $(".sk-circle").hide();
+           $("#cards").text("");
+           $("#forecast-heading").text("Something went horribly wrong. Check your Zip Code!");
+         },
+         success: function(result){
+           $(".sk-circle").hide();
 
-         $(".cards").append($article);
+           let forecast = [];
+           $("#forecast-heading").text(`${$('input[name="days"]:checked').val()}-Day Forecast for ${result.location.name}, ${result.location.region}`);
+
+           $("#cards").text("");
+
+           $.each (result.forecast.forecastday, function(index, item) {
+
+             forecast.push(
+               {
+                 high: item.day.maxtemp_f.toFixed(0),
+                 low: item.day.mintemp_f.toFixed(0),
+                 iconUrl: `https:${item.day.condition.icon}`,
+                 text: item.day.condition.text,
+                 date: item.date
+               }
+             );
+
+           });
+
+           $("#forecast-template").tmpl(forecast).appendTo("#cards");
+         }
        });
-
-     }
-   });
-
-
-
+    }
+  });
 });
-
-
-// let url = "http://api.apixu.com/v1/forecast.json?key=cc9c36b492994ba8993180021193103&q=12866&days=5";
-// let weather;
-//
-// $.ajax(
-//   {
-//     url: url,
-//     success: function(result){
-//       //console.log(result);
-//       let imgUrl = "https:" + result.current.condition.icon;
-//       $("body").append(`<h2>${result.location.name}</h2>`);
-//       $("body").append('<img src="' + imgUrl + '">' );
-//
-//       weather = result;
-//
-//       $.each(result.forecast.forecastday, function(index, day) {
-//         $("body").append(`<p>${day.day.condition.text}</p>`);
-//
-//
-//       });
-//     }
-//   });
-
-// let weather = [
-//   { date: "4/1/2019",
-//     imgUrl: "https://cdn.apixu.com/weather/64x64/night/113.png",
-//     high: "60º",
-//     low: "45º"
-//   },
-//   { date: "4/2/2019",
-//     imgUrl: "https://cdn.apixu.com/weather/64x64/night/113.png",
-//     high: "55º",
-//     low: "45º"
-//   },
-//   { date: "4/3/2019",
-//     imgUrl: "https://cdn.apixu.com/weather/64x64/night/113.png",
-//     high: "73º",
-//     low: "45º"
-//   },
-//   { date: "4/4/2019",
-//     imgUrl: "https://cdn.apixu.com/weather/64x64/night/113.png",
-//     high: "80º",
-//     low: "45º"
-//   },
-//   { date: "4/5/2019",
-//     imgUrl: "https://cdn.apixu.com/weather/64x64/night/113.png",
-//     high: "60º",
-//     low: "45º"
-//   },
-//   { date: "4/6/2019",
-//     imgUrl: "https://cdn.apixu.com/weather/64x64/night/113.png",
-//     high: "24º",
-//     low: "45º"
-//   },
-//   { date: "4/7/2019",
-//     imgUrl: "https://cdn.apixu.com/weather/64x64/night/113.png",
-//     high: "0º",
-//     low: "45º"
-//   }
-// ];

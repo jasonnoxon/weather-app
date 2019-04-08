@@ -4,23 +4,47 @@
     <meta charset="utf-8">
     <title>Weather App</title>
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/spinner.css">
   </head>
   <body>
     <header>
       <h1>Weather App</h1>
-      <h2>Enter Zip Code</h2>
-      <input id="location" type="text" maxlength="5" size="6">
-      <span></span>
+      <input id="location-input" type="text" maxlength="5" size="6">
+      <input type="radio" name="days" value="5" checked>5 Day &nbsp;
+      <input type="radio" name="days" value="7">7 Day
     </header>
     <main>
-      <h2>7-Day Forecast for [LOCATION]</h2>
-      <div class="cards">
-
+      <h2 id="forecast-heading"></h2>
+      <div class="sk-circle">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
       </div>
+      <script id="forecast-template" type="text/x-jQuery-tmpl">
+        <article>
+          <img src="${iconUrl}">
+          <div>
+            <h3>${text}</h3>
+            <h4>${date}</h4>
+          </div>
+        </article>
+      </script>
+
+      <div id="cards"></div>
     </main>
     <footer>
     </footer>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
     <script type="text/javascript" src="js/master.js"></script>
   </body>
 </html>

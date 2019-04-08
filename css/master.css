@@ -1,28 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Chivo|Raleway');
 
-[class*="col-"] {
-  float: left;
-  min-height: 1px;
-}
-
-/* For mobile phones: */
-@media only screen and (max-width: 767px) {
-  [class*="col-"] {
-    width: 100%;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  /* For desktop: */
-  .col-1 {width: 14.28%;}
-  .col-2 {width: 28.57%;}
-  .col-3 {width: 42.85%;}
-  .col-4 {width: 57.13%;}
-  .col-5 {width: 71.41%;}
-  .col-6 {width: 85.69%;}
-  .col-7 {width: 100%;}
-}
-
 body {
   background-image: linear-gradient(to right, #dff9fb, #F8EFBA);
   font-family: 'Raleway', serif;
@@ -37,7 +14,7 @@ header {
 }
 
 header input[type="text"] {
-  border-radius: .5em;
+  border-radius: .25em;
   font-size: 2em;
   text-align: center;
 }
@@ -50,13 +27,37 @@ main h2 {
   text-align: center;
 }
 
-.cards {
-  max-width: 100%;
+#cards {
+  max-width: 60%;
   margin: 0 auto;
+  overflow: hidden;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start space-between;
+  align-items: baseline; */
 }
 
 article {
-  margin: 0 5px;
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+  border-radius: .25em;
   background-color: #3498db;
-  text-align: center;
+}
+
+article img, div {
+  display: inline-block;
+}
+
+article div {
+
+}
+
+article ul {
+  list-style: none;
+}
+
+article ul li {
+  display: inline-block;
+  vertical-align: center;
 }
