@@ -8,8 +8,6 @@ $(document).ready( function() {
 
       let url = `https://api.apixu.com/v1/forecast.json?key=cc9c36b492994ba8993180021193103&q=${$(this).val()}&days=${$('input[name="days"]:checked').val()}`;
 
-      console.log(url);
-
       $.ajax(
        {
          url: url,
