@@ -36,13 +36,6 @@ header nav input[type="text"] {
   text-align: center;
 }
 
-
-/* header input[type="text"] {
-  border-radius: .25em;
-  font-size: 2em;
-  text-align: center;
-} */
-
 header input[type="text"]:focus {
   outline: none;
 }
@@ -64,14 +57,11 @@ article {
   margin: 5px 0;
   border-radius: .25em;
   background-color: #3498db;
+  color: white;
 }
 
 article img, div {
   display: inline-block;
-}
-
-article div {
-
 }
 
 article ul {
