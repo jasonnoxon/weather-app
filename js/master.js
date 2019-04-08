@@ -1,12 +1,12 @@
 $(document).ready( function() {
 
-  $("#forecast-heading").text("Enter a valid Zip Code");
+  $("#location-input").focus();
   $(".sk-circle").hide();
 
   $("#location-input").on("input", function(){
     if($(this).val().length == 5 ) {
 
-      let url = `http://api.apixu.com/v1/forecast.json?key=cc9c36b492994ba8993180021193103&q=${$(this).val()}&days=${$('input[name="days"]:checked').val()}`;
+      let url = `https://api.apixu.com/v1/forecast.json?key=cc9c36b492994ba8993180021193103&q=${$(this).val()}&days=${$('input[name="days"]:checked').val()}`;
 
       console.log(url);
 

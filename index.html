@@ -8,27 +8,21 @@
   </head>
   <body>
     <header>
-      <h1>Weather App</h1>
-      <input id="location-input" type="text" maxlength="5" size="6">
-      <input type="radio" name="days" value="5" checked>5 Day &nbsp;
-      <input type="radio" name="days" value="7">7 Day
+      <nav>
+        <span class="nav-left">
+          <h1>Weather App</h1>
+        </span>
+        <span class="nav-right">
+          <input id="location-input" type="text" maxlength="5" placeholder="Enter a Valid Zip Code"> &nbsp;
+          <input type="radio" name="days" value="5" checked>5 Day &nbsp;
+          <input type="radio" name="days" value="7">7 Day
+        </span>
+      </nav>
+
     </header>
     <main>
       <h2 id="forecast-heading"></h2>
-      <div class="sk-circle">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
-      </div>
+
       <script id="forecast-template" type="text/x-jQuery-tmpl">
         <article>
           <img src="${iconUrl}">
@@ -39,7 +33,22 @@
         </article>
       </script>
 
-      <div id="cards"></div>
+      <div id="cards">
+        <div class="sk-circle">
+          <div class="sk-circle1 sk-child"></div>
+          <div class="sk-circle2 sk-child"></div>
+          <div class="sk-circle3 sk-child"></div>
+          <div class="sk-circle4 sk-child"></div>
+          <div class="sk-circle5 sk-child"></div>
+          <div class="sk-circle6 sk-child"></div>
+          <div class="sk-circle7 sk-child"></div>
+          <div class="sk-circle8 sk-child"></div>
+          <div class="sk-circle9 sk-child"></div>
+          <div class="sk-circle10 sk-child"></div>
+          <div class="sk-circle11 sk-child"></div>
+          <div class="sk-circle12 sk-child"></div>
+        </div>
+      </div>
     </main>
     <footer>
     </footer>
