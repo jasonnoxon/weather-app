@@ -31,7 +31,6 @@ $(document).ready( function() {
            $(".sk-circle").hide();
            $("#cards").text("");
            $("#forecast-heading").text("Something went horribly wrong. Check your Zip Code!");
-
          },
          success: function(result){
            $(".sk-circle").hide();

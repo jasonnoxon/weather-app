@@ -42,7 +42,6 @@ header input[type="text"]:focus {
 
 main h2 {
   text-align: center;
-  opacity: 0;
 }
 
 #cards {
