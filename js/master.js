@@ -1,12 +1,25 @@
 $(document).ready( function() {
 
-  $("#location-input").focus();
+  let $zipCode = $("#location-input");
+
+  $zipCode.focus();
   $(".sk-circle").hide();
 
-  $("#location-input").on("input", function(){
+  $zipCode.on("input", function(){
     if($(this).val().length == 5 ) {
+      updateForecast();
+    }
+  });
 
-      let url = `https://api.apixu.com/v1/forecast.json?key=cc9c36b492994ba8993180021193103&q=${$(this).val()}&days=${$('input[name="days"]:checked').val()}`;
+  $('input[name="days"]').on("change", function(){
+    if ($zipCode.val().length == 5 ) {
+      updateForecast();
+    }
+  });
+
+  let updateForecast = function() {
+
+      let url = `https://api.apixu.com/v1/forecast.json?key=cc9c36b492994ba8993180021193103&q=${$zipCode.val()}&days=${$('input[name="days"]:checked').val()}`;
 
       $.ajax(
        {
@@ -35,7 +48,7 @@ $(document).ready( function() {
                  low: item.day.mintemp_f.toFixed(0),
                  iconUrl: `https:${item.day.condition.icon}`,
                  text: item.day.condition.text,
-                 date: item.date
+                 date: new Date(item.date).toLocaleDateString("US-en", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
                }
              );
 
@@ -44,6 +57,5 @@ $(document).ready( function() {
            $("#forecast-template").tmpl(forecast).appendTo("#cards");
          }
        });
-    }
-  });
+     }
 });
