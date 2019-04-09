@@ -42,6 +42,7 @@ header input[type="text"]:focus {
 
 main h2 {
   text-align: center;
+  opacity: 0;
 }
 
 #cards {
@@ -58,6 +59,7 @@ article {
   border-radius: .25em;
   background-color: #3498db;
   color: white;
+  opacity: 0;
 }
 
 article img, div {

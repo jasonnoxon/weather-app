@@ -31,6 +31,7 @@ $(document).ready( function() {
            $(".sk-circle").hide();
            $("#cards").text("");
            $("#forecast-heading").text("Something went horribly wrong. Check your Zip Code!");
+
          },
          success: function(result){
            $(".sk-circle").hide();
@@ -54,7 +55,9 @@ $(document).ready( function() {
 
            });
 
-           $("#forecast-template").tmpl(forecast).appendTo("#cards");
+           $("#forecast-template").tmpl(forecast)
+                                  .appendTo("#cards")
+                                  .animate({ opacity: 1}, 1000);
          }
        });
      }
